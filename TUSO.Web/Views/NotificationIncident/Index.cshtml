@@ -1,0 +1,67 @@
+﻿@model IEnumerable<TUSO.Domain.Entities.Incident>
+
+@{
+   ViewData["Title"] = "Index";
+}
+
+<script src="~/app-assets/vendors/js/jquery/jquery.min.js"></script>
+<script src="~/lib/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/notification.js"></script>
+<script src="~/js/incident.js"></script>
+
+<h1>Index</h1>
+
+<p>
+   <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+   <thead>
+      <tr>
+         <th>Description</th>
+         <th>DateReported</th>
+         <th>DueDate</th>
+         <th>DateResolved</th>
+         <th>IncidentStatus</th>
+         <th>UserAccountID</th>
+         <th>IncidentTypeID</th>
+         <th>Action</th>
+         @*<th>
+         @Html.DisplayNameFor(model => model.CountryName)
+         </th>*@
+
+      </tr>
+   </thead>
+   <tbody>
+      @foreach (var item in Model)
+      {
+         <tr>
+            <td>
+               @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+               @Html.DisplayFor(modelItem => item.DateReported)
+            </td>
+            <td>
+               @Html.DisplayFor(modelItem => item.DueDate)
+            </td>
+            <td>
+               @Html.DisplayFor(modelItem => item.DateResolved)
+            </td>
+            <td>
+               @Html.DisplayFor(modelItem => item.IncidentStatus)
+            </td>
+            <td>
+               @Html.DisplayFor(modelItem => item.UserAccountID)
+            </td>
+            <td>
+               @Html.DisplayFor(modelItem => item.IncidentTypeID)
+            </td>
+            <td>
+               <a asp-action="Edit" asp-route-id="@item.OID">Edit</a> |
+               <a asp-action="Details" asp-route-id="@item.OID">Details</a> |
+               <a asp-action="Delete" asp-route-id="@item.OID">Delete</a>
+            </td>
+         </tr>
+      }
+   </tbody>
+</table>
